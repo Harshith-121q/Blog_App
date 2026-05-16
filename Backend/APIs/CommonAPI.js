@@ -4,7 +4,7 @@ import { hash, compare } from "bcryptjs";
 import { config } from "dotenv";
 import jwt from "jsonwebtoken";
 import { verifyToken } from "../middlewares/VerifyToken.js";
-const { sign } = jwt;
+  const { sign } = jwt;
 export const commonApp = exp.Router();
 import { upload } from "../config/multer.js";
 import { uploadToCloudinary } from "../config/cloudinaryUpload.js";
@@ -87,7 +87,7 @@ commonApp.post("/login", async (req, res) => {
     },
     process.env.SECRET_KEY,
     {
-      expiresIn: "1h",
+      expiresIn: "1h"
     },
   );
 
