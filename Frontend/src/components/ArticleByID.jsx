@@ -114,7 +114,7 @@ function ArticleByID() {
     //add artcileId
     commentObj.articleId = article._id;
     console.log(commentObj);
-    let res = await axios.put(https://blog-app-1wnj.onrender.com/user-api/articles", commentObj, { withCredentials: true });
+    let res = await axios.put("https://blog-app-1wnj.onrender.com/user-api/articles", commentObj, { withCredentials: true });
     if (res.status === 200) {
       
       setArticle(res.data.payload);
