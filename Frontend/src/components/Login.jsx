@@ -26,7 +26,11 @@ function Login() {
 
   const navigate = useNavigate();
   //get state from auth store
-  const { login, currentUser, loading, error, isAuthenticated } = useAuth((state) => state);
+  const login = useAuth((state) => state.login);
+  const currentUser = useAuth((state) => state.currentUser);
+  const loading = useAuth((state) => state.loading);
+  const error = useAuth((state) => state.error);
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
   //on user login
   const onUserLogin = (userCredObj) => {
     //call login() of auth store
@@ -34,23 +38,21 @@ function Login() {
   };
 
   useEffect(() => {
-    //navigation logic
-    if (isAuthenticated === true) {
+    if (isAuthenticated && currentUser) {
       if (currentUser.role === "USER") {
-        //show cuccess toast
-        toast.success("Login success and redirecting to User Profile",{duration:2000})
+        toast.success("Login success and redirecting to User Profile", { duration: 2000 });
         navigate("/user-profile");
       }
       if (currentUser.role === "AUTHOR") {
-         toast.success("Login success and redirecting to Author Profile",{duration:2000})
+        toast.success("Login success and redirecting to Author Profile", { duration: 2000 });
         navigate("/author-profile");
       }
       if (currentUser.role === "ADMIN") {
-         toast.success("Login success and redirecting to Admin Profile",{duration:2000})
+        toast.success("Login success and redirecting to Admin Profile", { duration: 2000 });
         navigate("/admin-profile");
       }
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, currentUser, navigate]);
 
   //deal with loading
   if (loading) {

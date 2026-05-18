@@ -1,0 +1,17 @@
+# Node dependencies
+node_modules/
+
+# Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+*.env
+
+# Build output
+**/dist/
+
+# Vite / IDE
+.DS_Store
+.vscode/
